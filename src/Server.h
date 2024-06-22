@@ -4,5 +4,14 @@
 #pragma once
 
 #include <iostream>
-
+#include <boost/asio.hpp>
 // TODO: Reference additional headers your program requires here.
+namespace WebFramework 
+{
+	class Server {
+	public:
+
+	private:
+	};
+
+}

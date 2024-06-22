@@ -11,7 +11,7 @@ endif()
 
 
 # Add source to this project's executable.
-add_executable (GamersAgainstWeedWebsiteCPlusPlus "main.cpp" "Server.h")
+add_executable (GamersAgainstWeedWebsiteCPlusPlus "src/main.cpp" "src/Server.h")
 
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
@@ -26,3 +26,14 @@ target_link_libraries(GamersAgainstWeedWebsiteCPlusPlus PRIVATE cxxopts::cxxopts
 
 find_package(xsimd CONFIG REQUIRED)
 target_link_libraries(GamersAgainstWeedWebsiteCPlusPlus PRIVATE xsimd)
+
+set(Boost_USE_STATIC_LIBS ON)
+
+find_package(Boost COMPONENTS filesystem iostreams REQUIRED)
+if (Boost_FOUND)
+    include_directories(${Boost_INCLUDE_DIRS})
+    link_directories(${Boost_LIBRARY_DIRS})
+endif ()
+
+# ...
+target_link_libraries(GamersAgainstWeedWebsiteCPlusPlus PRIVATE Boost::boost)
