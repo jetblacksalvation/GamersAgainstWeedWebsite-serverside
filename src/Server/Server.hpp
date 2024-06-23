@@ -21,10 +21,19 @@ namespace GAWWebFramework
 		IpAddr _addr;
 
 	};
+	class ServerContent 
+	{
+	public:
+		virtual void Load();
+
+	private:
+
+	};
 	class Server 
 	{
 	public:
 		Server(ServerSettings settings);
+		void LoadContent();
 	private:
 
 	};

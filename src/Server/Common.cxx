@@ -1,6 +1,6 @@
 #include "Common.hpp"
 
-std::string GAWWebFramework::CommonFunctions::GetLocalIp(boost::asio::io_context& io_context) 
+std::string GAWWebFramework::CommonFunctions::GetLocalIp(IoContext& io_context)
 {
     TcpResolver resolver(io_context);
     TcpResolver::query query(boost::asio::ip::host_name(), "");
@@ -17,4 +17,12 @@ std::string GAWWebFramework::CommonFunctions::GetLocalIp(boost::asio::io_context
     }
 
     return "127.0.0.1"; // Default to localhost if no suitable address is found
+}
+bool GAWWebFramework::CommonFunctions::isDebug()
+{
+    bool isDefinedDebug = false;
+#ifdef DEBUG
+    isDefinedDebug = true;
+#endif // DEBUG
+    return isDefinedDebug;
 }

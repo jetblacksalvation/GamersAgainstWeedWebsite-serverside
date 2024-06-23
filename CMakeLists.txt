@@ -15,7 +15,7 @@ add_executable (GamersAgainstWeedWebsiteCPlusPlus "src/main.cpp" "src/Server/Ser
 
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET GamersAgainstWeedWebsiteCPlusPlus PROPERTY CXX_STANDARD 20)
+  set_property(TARGET GamersAgainstWeedWebsiteCPlusPlus PROPERTY CXX_STANDARD 23)
 endif()
 
 # TODO: Add tests and install targets if needed.
@@ -38,3 +38,9 @@ endif ()
 
 # ...
 target_link_libraries(GamersAgainstWeedWebsiteCPlusPlus PRIVATE Boost::boost)
+#Some build macros 
+target_compile_definitions(GamersAgainstWeedWebsiteCPlusPlus
+    PRIVATE
+        # If the debug configuration pass the DEBUG define to the compiler 
+        $<$<CONFIG:Debug>:DEBUG>
+)
