@@ -11,7 +11,7 @@ endif()
 
 
 # Add source to this project's executable.
-add_executable (GamersAgainstWeedWebsiteCPlusPlus "src/main.cpp" "src/Server.h")
+add_executable (GamersAgainstWeedWebsiteCPlusPlus "src/main.cpp" "src/Server/Server.hpp" "src/Server/Common.hpp" "src/Server/Common.cxx" "src/Server/Server.cxx")
 
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
@@ -19,6 +19,7 @@ if (CMAKE_VERSION VERSION_GREATER 3.12)
 endif()
 
 # TODO: Add tests and install targets if needed.
+include_directories(${CMAKE_SOURCE_DIR}/src)
 
 find_package(cxxopts CONFIG REQUIRED)
 target_link_libraries(GamersAgainstWeedWebsiteCPlusPlus PRIVATE cxxopts::cxxopts)
