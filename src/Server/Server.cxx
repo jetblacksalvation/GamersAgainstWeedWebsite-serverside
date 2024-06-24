@@ -1,15 +1,26 @@
 #include "Server.hpp"
 #include "Common.hpp"
 #include <stacktrace>
-GAWWebFramework::Server::Server(GAWWebFramework::ServerSettings settings)
+GAWWebFramework::Server::Server(GAWWebFramework::ServerSettings settings) 
+	:_settings(settings)
 {
 
 }
-void GAWWebFramework::ServerSettings::setPort(int x) 
+GAWWebFramework::Server::Server(ServerSettings settings, ServerContent content) 
+	:_settings(settings),
+	_content(content)
+{
+
+}
+void GAWWebFramework::Server::LoadContent(GAWWebFramework::ServerContent content)
+{
+	this->_content = content;
+}
+void GAWWebFramework::ServerSettings::SetPort(int x) 
 {
 	this->_port = x;
 }
-int GAWWebFramework::ServerSettings::getPort()
+int GAWWebFramework::ServerSettings::GetPort()
 {
 	return this->_port;
 }
@@ -35,10 +46,7 @@ GAWWebFramework::ServerSettings::ServerSettings(int port , std::string addr)
 }
 void GAWWebFramework::ServerContent::Load() 
 {
-#ifdef DEBUG
+	LoggerSettings::LogSeverity level(LoggerSettings::_LogSeverity::SEVERE);
 
-#endif // DEBUG
-	DEBUG_LOG(4, "Load was not defined!");
-
-	throw std::runtime_error("GAWWebFramework::ServerContent::Load");
+	DEBUG_LOG(level, "Load was not defined!");
 }

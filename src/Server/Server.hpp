@@ -12,8 +12,8 @@ namespace GAWWebFramework
 		//server defaults to tcp connection.
 
 	public:
-		void setPort(int x);
-		int  getPort();
+		void SetPort(int x);
+		int  GetPort();
 		ServerSettings(int port , std::string addr);
 	private:
 		void _ConstructAddr(int port, std::string addr);
@@ -33,9 +33,12 @@ namespace GAWWebFramework
 	{
 	public:
 		Server(ServerSettings settings);
-		void LoadContent();
-	private:
+		Server(ServerSettings settings, ServerContent content);
 
+		void LoadContent(ServerContent content);
+	private:
+		ServerSettings _settings;
+		ServerContent  _content; 
 	};
 
 }
