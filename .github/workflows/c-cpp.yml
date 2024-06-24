@@ -3,16 +3,15 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    branches: [ main ]
+  workflow_dispatch:
+
 permissions:
   contents: write
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   VCPKG_FEATURE_FLAGS: dependencygraph
-
 jobs:
   build:
 
