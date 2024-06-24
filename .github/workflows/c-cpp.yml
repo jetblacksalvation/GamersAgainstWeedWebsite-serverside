@@ -16,6 +16,6 @@ jobs:
     - name: mkdir build
       run: mkdir build
     - name: cmake 
-      run: cmake --build 
+      run: cmake --build build
 
     
