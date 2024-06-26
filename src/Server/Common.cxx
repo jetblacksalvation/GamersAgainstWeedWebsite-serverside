@@ -11,18 +11,20 @@ std::string GAWWebFramework::CommonFunctions::GetLocalIp(IoContext& io_context)
         TcpEndpoint ep = *iter++;
         boost::asio::ip::address addr = ep.address();
         if (addr.is_v4() && !addr.is_loopback()) { // We only want non-loopback IPv4 addresses
-
             return addr.to_string();
         }
     }
 
     return "127.0.0.1"; // Default to localhost if no suitable address is found
 }
-bool GAWWebFramework::CommonFunctions::isDebug()
+ bool GAWWebFramework::CommonFunctions::isDebug() 
 {
-    bool isDefinedDebug = false;
+#ifndef DEBUG
+
+    const bool isDefinedDebug = false;
+#endif
 #ifdef DEBUG
-    isDefinedDebug = true;
+    const bool isDefinedDebug = true;
 #endif // DEBUG
     return isDefinedDebug;
 }

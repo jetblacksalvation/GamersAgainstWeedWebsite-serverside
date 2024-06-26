@@ -1,6 +1,6 @@
-﻿// GAMERSAGAINSTWEEDSERVER
-#ifndef GAMERSAGAINSTWEEDSERVER
-#define GAMERSAGAINSTWEEDSERVER 
+﻿// GAMERSAGAINSTWEED_SERVER
+#ifndef GAMERSAGAINSTWEED_SERVER
+#define GAMERSAGAINSTWEED_SERVER 
 
 #include "Common.hpp"
 // TODO: Reference additional headers your program requires here.

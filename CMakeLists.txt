@@ -11,7 +11,7 @@ endif()
 project(GamersAgainstWeedWebsite)
 
 # Add source to this project's executable.
-add_executable (GamersAgainstWeedWebsiteCPlusPlus "src/main.cpp" "src/Server/Server.hpp" "src/Server/Common.hpp" "src/Server/Common.cxx" "src/Server/Server.cxx")
+add_executable (GamersAgainstWeedWebsiteCPlusPlus "src/main.cpp" "src/Server/Server.hpp" "src/Server/Common.hpp" "src/Server/Common.cxx" "src/Server/Server.cxx" "src/Server/SockCom.cxx")
 
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)

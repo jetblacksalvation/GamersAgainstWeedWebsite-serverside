@@ -46,7 +46,7 @@ GAWWebFramework::ServerSettings::ServerSettings(int port , std::string addr)
 }
 void GAWWebFramework::ServerContent::Load() 
 {
-	LoggerSettings::LogSeverity level(LoggerSettings::_LogSeverity::SEVERE);
+	Logger::LogSeverity level(Logger::_LogSeverity::SEVERE);
 
 	DEBUG_LOG(level, "Load was not defined!");
 }
