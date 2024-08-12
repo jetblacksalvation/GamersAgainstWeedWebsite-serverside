@@ -14,6 +14,7 @@ namespace GAWWebFramework
 	public:
 		void SetPort(int x);
 		int  GetPort();
+		IpAddr GetAddr();
 		ServerSettings(int port , std::string addr);
 	private:
 		void _ConstructAddr(int port, std::string addr);
@@ -24,8 +25,18 @@ namespace GAWWebFramework
 	class ServerContent 
 	{
 	public:
+		/*
+		ACTS as constructor
+		*/
 		virtual void Load();
-
+		virtual const std::string GetServiceString() 
+		{
+			return const std::string("");
+		};
+		/*
+			By Convention Deploy should spawn a new thread but doesn't need to... ovveride is EXPECTED to eventually return
+		*/
+		virtual void Deploy(GAWWebFramework::IoContext&, ServerSettings const&) {};
 	private:
 
 	};
@@ -36,9 +47,10 @@ namespace GAWWebFramework
 		Server(ServerSettings settings, ServerContent content);
 
 		void LoadContent(ServerContent content);
+		void HandleService(std::string service);
 	private:
 		ServerSettings _settings;
-		ServerContent  _content; 
+		std::vector<ServerContent>  _content; 
 	};
 
 }

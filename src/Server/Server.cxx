@@ -8,13 +8,13 @@ GAWWebFramework::Server::Server(GAWWebFramework::ServerSettings settings)
 }
 GAWWebFramework::Server::Server(ServerSettings settings, ServerContent content) 
 	:_settings(settings),
-	_content(content)
+	_content({ content })
 {
 
 }
 void GAWWebFramework::Server::LoadContent(GAWWebFramework::ServerContent content)
 {
-	this->_content = content;
+	this->_content.push_back( content);
 }
 void GAWWebFramework::ServerSettings::SetPort(int x) 
 {
@@ -23,6 +23,10 @@ void GAWWebFramework::ServerSettings::SetPort(int x)
 int GAWWebFramework::ServerSettings::GetPort()
 {
 	return this->_port;
+}
+GAWWebFramework::IpAddr GAWWebFramework::ServerSettings::GetAddr()
+{
+	return this->_addr;
 }
 void GAWWebFramework::ServerSettings::_ConstructAddr(int port, std::string addr) 
 {
@@ -49,4 +53,19 @@ void GAWWebFramework::ServerContent::Load()
 	Logger::LogSeverity level(Logger::_LogSeverity::SEVERE);
 
 	DEBUG_LOG(level, "Load was not defined!");
+}
+
+
+//server stuff
+
+void GAWWebFramework::Server::HandleService(std::string str)
+{
+	for (auto st : this->_content)
+	{
+		if (st.GetServiceString() == str)
+		{
+			st.Load();
+
+		}
+	}
 }
