@@ -2,7 +2,7 @@
 //
 
 #include "Server/Server.hpp"
-
+#include "Server/SockCom.hpp"
 #include <functional>
 int main()
 {
@@ -12,7 +12,9 @@ int main()
 		8080, GAWWebFramework::CommonFunctions::GetLocalIp(io_context)
 	};
 	GAWWebFramework::Server server(server_settings);
-	server.LoadContent();
-	server.
+	GAWWebFramework::SockComFactory factory{GAWWebFramework::SockComFactory::SocketEnum::IPC};
+	server.LoadContent(factory);
+	server.ServeContent();
+	//server.HandleService("http");
 	return 0;
 }

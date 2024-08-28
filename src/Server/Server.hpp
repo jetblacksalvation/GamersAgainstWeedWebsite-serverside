@@ -4,10 +4,10 @@
 
 #include "Common.hpp"
 // TODO: Reference additional headers your program requires here.
-namespace GAWWebFramework 
+namespace GAWWebFramework
 {
-	
-	class ServerSettings 
+
+	class ServerSettings
 	{
 		//server defaults to tcp connection.
 
@@ -15,11 +15,15 @@ namespace GAWWebFramework
 		void SetPort(int x);
 		int  GetPort();
 		IpAddr GetAddr();
-		ServerSettings(int port , std::string addr);
+		ServerSettings(int port, std::string addr);
 	private:
 		void _ConstructAddr(int port, std::string addr);
 		int    _port;
 		IpAddr _addr;
+
+	};
+	class ServerContentSettings
+	{
 
 	};
 	class ServerContent 
@@ -31,7 +35,7 @@ namespace GAWWebFramework
 		virtual void Load();
 		virtual const std::string GetServiceString() 
 		{
-			return const std::string("");
+			return  std::string("");
 		};
 		/*
 			By Convention Deploy should spawn a new thread but doesn't need to... ovveride is EXPECTED to eventually return
@@ -48,6 +52,7 @@ namespace GAWWebFramework
 
 		void LoadContent(ServerContent content);
 		void HandleService(std::string service);
+		void ServeContent();
 	private:
 		ServerSettings _settings;
 		std::vector<ServerContent>  _content; 

@@ -16,6 +16,10 @@ void GAWWebFramework::Server::LoadContent(GAWWebFramework::ServerContent content
 {
 	this->_content.push_back( content);
 }
+void GAWWebFramework::Server::ServeContent()
+{
+
+}
 void GAWWebFramework::ServerSettings::SetPort(int x) 
 {
 	this->_port = x;
